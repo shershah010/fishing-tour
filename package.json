@@ -37,6 +37,10 @@
   "license": "MIT",
   "main": "index.js",
   "name": "fishing-tour",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/shershah010/fishing-tour"
+  },
   "scripts": {
     "start": "node index.js"
   },
