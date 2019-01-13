@@ -1,0 +1,106 @@
+/* Tips styles */
+
+.circleContainer {
+		position: absolute;
+		z-index: 100;
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+		left: -40px;
+	}
+
+.circle {
+    border-radius: 50%;
+    background-color: deepskyblue;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    opacity: 0;
+    animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(.2, .2);
+        opacity: .5;
+    }
+    to {
+        transform: scale(1.5, 1.5);
+        opacity: 0;
+    }
+}
+
+.tipBox {
+    font-family: sans-serif;
+    position: absolute;
+    background-color: white;
+    z-index: 99;
+    max-width: 350px;
+    min-width: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    top: 0px;
+}
+
+.tipBox.left {
+    left: -50px;
+}
+
+.tipBox.right {
+    left: 50px;
+}
+
+.tipBox h1 {
+    font-family: sans-serif;
+    background-color: #00d1ff;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+    margin: 0px;
+}
+
+.tipBox p {
+    font-family: sans-serif;
+    padding: 20px;
+    font-size: 16px;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover {
+    color: #eeeeee;
+}
+
+.bigButton {
+    text-align: center;
+    background-color: #22e647;
+    padding: 10px;
+    display: block;
+    margin: 10px auto;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.bigButton:hover {
+    background-color: #1ccc3d;
+}
+
+.smallButton {
+    position: absolute;
+    top : 5px;
+    right: 5px;
+    background-color: transparent;
+    padding: 5px;
+    color: white;
+    border: none;
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+/* Tour styles */

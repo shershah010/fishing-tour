@@ -1,0 +1,44 @@
+{
+  "_from": "fishing-tour",
+  "_id": "fishing-tour@1.0.2",
+  "_inBundle": false,
+  "_integrity": "sha512-6cOxapwz/LsiuiGtu+ncgTXs6GskOS4bMDLL4vDbGec3ZtC8K+/u9g6pS3GkRF1cgkGJIt3cipHmpLMO9BKFXQ==",
+  "_location": "/fishing-tour",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "fishing-tour",
+    "name": "fishing-tour",
+    "escapedName": "fishing-tour",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/fishing-tour/-/fishing-tour-1.0.2.tgz",
+  "_shasum": "f61c407b73ad1b4807fcb2dafe03836a8029708f",
+  "_spec": "fishing-tour",
+  "_where": "E:\\fishing-tour-test",
+  "author": {
+    "name": "Sher Shah"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "A library that makes developing feature tours simple, easy, and customizable.",
+  "keywords": [
+    "feature",
+    "tour"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "fishing-tour",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "version": "1.0.3"
+}
