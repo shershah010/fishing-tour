@@ -123,11 +123,26 @@ export class Tour {
 			buttonBox.appendChild(backButton);
 			buttonBox.appendChild(nextButton);
 		}
+    var placement = this.findPlacement(element, pos)
 		tourBox.appendChild(info);
 		tourBox.appendChild(buttonBox);
-		tourBox.classList.add("tourBox", pos);
+		tourBox.classList.add("tourBox");
+    tourBox.style.cssText = placement;
 		element.appendChild(tourBox);
 	}
+
+  findPlacement(el, pos) {
+    var top = 0;
+    var left = 0;
+    switch (pos) {
+      case "top" :  top = -300; break;
+      case "left" : left = -350; break;
+      case "right" : left = el.getBoundingClientRect().width; break;
+      case "bottom" : top = el.getBoundingClientRect().height; break;
+    }
+    return "top: " + top + "px; left: " + left + "px;";
+  }
+
 	next() {
 		this.deinitializeStep();
 		this.currentStep++;
@@ -138,6 +153,7 @@ export class Tour {
 		}
 		//go to the next step
 	}
+
 	back() {
 		this.deinitializeStep();
 		this.currentStep--;
@@ -147,6 +163,7 @@ export class Tour {
 		this.initializeStep(this.steps[this.currentStep]);
 		// got to the previous step
 	}
+
 	end() {
 		this.deinitializeStep();
 		// end the tour

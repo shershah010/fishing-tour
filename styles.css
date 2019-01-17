@@ -108,6 +108,7 @@ button:hover {
   font-family: sans-serif;
   max-width: 350px;
   min-width: 250px;
+  height: 300px;
   position: absolute;
   top: 0px;
   z-index: 99;
