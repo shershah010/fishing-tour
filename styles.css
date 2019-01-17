@@ -101,3 +101,28 @@ button:hover {
 }
 
 /* Tour styles */
+
+.tourBox {
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: sans-serif;
+  max-width: 350px;
+  min-width: 250px;
+  position: absolute;
+  top: 0px;
+  z-index: 99;
+}
+
+.tourBox button {
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 0;
+  color: #000;
+  padding: 5px;
+  margin: 5px;
+}
+
+.tourBox button:hover {
+  border-color: #000;
+  color: #000;
+}

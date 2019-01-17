@@ -26,7 +26,7 @@ export class Tips {
     if (this.index >= this.tips.length) {
       return;
     }
-    
+
     const tip = this.tips[this.index];
     const target = document.querySelector(tip.selector);
     const circle = document.createElement("container");
@@ -66,7 +66,7 @@ export class Tips {
       });
 
       target.appendChild(tipBox);
-    }_.bind(this));
+    }).bind(this));
 
     target.appendChild(circle);
   }
@@ -104,13 +104,13 @@ export class Tour {
 		var tourBox = document.createElement("div");
 		var buttonBox = document.createElement("div");
 		var backButton = document.createElement("button");
-		backButton.onclick = function() { me.back(); };
+		backButton.onclick = (function() { this.back(); }).bind(this);
 		backButton.innerHTML = "Back";
 		var nextButton = document.createElement("button");
-		nextButton.onclick = function() { me.next(); };
+		nextButton.onclick = (function() { this.next(); }).bind(this);
 		nextButton.innerHTML = "Next";
 		var doneButton = document.createElement("button");
-		doneButton.onclick = function() { me.end() };
+		doneButton.onclick = (function() { this.end(); }).bind(this);
 		doneButton.innerHTML = (this.currentStep == this.steps.length) ? "Done" : "Skip";
 		if (this.currentStep == 0) {
 			buttonBox.appendChild(doneButton);
