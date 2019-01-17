@@ -5,17 +5,17 @@ export class Tips {
   constructor(index) {
     this.tips = [];
     this.index = index;
-    const _this = this;
 
-    window.onclick = function(event) {
+    window.onclick = (function(event) {
       var tipBox = event.target.closest(".tipBox");
       var circles = event.target.closest(".circleContainer");
-      if (tipBox == null && circles == null && document.querySelector(".tipBox") != null) {
-        document.querySelector(".tipBox").remove();
-        _this.index += 1;
-        _this.start();
+      var tipBoxPresent = document.querySelector(".tipBox");
+      if (tipBox == null && circles == null && tipBoxPresent != null) {
+        tipBoxPresent.remove();
+        this.index += 1;
+        this.start();
       }
-    }
+    }).bind(this);
   }
 
   add(tip) {
@@ -26,7 +26,7 @@ export class Tips {
     if (this.index >= this.tips.length) {
       return;
     }
-    const _this = this;
+    
     const tip = this.tips[this.index];
     const target = document.querySelector(tip.selector);
     const circle = document.createElement("container");
@@ -37,15 +37,15 @@ export class Tips {
     circle.style.top = tip.y;
     circle.style.left = tip.x;
     circle.innerHTML = "<div class='circle' style='animation-delay: -2s'></div><div class='circle' style='animation-delay: -1s'></div><div class='circle' style='animation-delay: 0s'></div>";
-    circle.addEventListener("click", function(e) {
+    circle.addEventListener("click", (function(e) {
       this.remove();
 
       const tipBox = document.createElement("div");
 
       let next = function() {
         tipBox.remove();
-        _this.index =+ 1;
-        _this.start();
+        this.index =+ 1;
+        this.start();
       }
 
       let outside = function(e) {
@@ -66,7 +66,7 @@ export class Tips {
       });
 
       target.appendChild(tipBox);
-    });
+    }_.bind(this));
 
     target.appendChild(circle);
   }
