@@ -42,17 +42,17 @@ export class Tips {
 
       const tipBox = document.createElement("div");
 
-      let next = function() {
+      let next = (function() {
         tipBox.remove();
         this.index =+ 1;
         this.start();
-      }
+      }).bind(this);
 
-      let outside = function(e) {
+      let outside = (function(e) {
         if (e.target != tipBox && e.target != circle) {
           next();
         }
-      }
+      }).bind(this);
 
       tipBox.classList.add("tipBox");
       tipBox.innerHTML = "<h1>" + tip.header + "</h1><p>" + tip.info + "</p><button class='smallButton'>&#x26CC;</button><button class='bigButton'>Show Me</button>";
