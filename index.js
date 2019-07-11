@@ -147,7 +147,7 @@ export class Tour {
 		this.deinitializeStep();
 		this.currentStep++;
 		if (this.currentStep >= this.steps.length) {
-			end();
+			this.end();
 		} else {
 			this.initializeStep(this.steps[this.currentStep]);
 		}
