@@ -1,6 +1,4 @@
-"use strict";
-
-export class Tips {
+class Tips {
 
   constructor(index) {
     this.tips = [];
@@ -38,14 +36,14 @@ export class Tips {
     circle.style.left = tip.x;
     circle.innerHTML = "<div class='circle' style='animation-delay: -2s'></div><div class='circle' style='animation-delay: -1s'></div><div class='circle' style='animation-delay: 0s'></div>";
     circle.addEventListener("click", (function(e) {
-      this.remove();
+      circle.remove();
 
       const tipBox = document.createElement("div");
 
       let next = (function() {
         tipBox.remove();
-        this.index =+ 1;
-        this.start();
+        this.index += 1;
+        this.start();tipBox.remove();
       }).bind(this);
 
       let outside = (function(e) {
@@ -55,7 +53,7 @@ export class Tips {
       }).bind(this);
 
       tipBox.classList.add("tipBox");
-      tipBox.innerHTML = "<h1>" + tip.header + "</h1><p>" + tip.info + "</p><button class='smallButton'>&#x26CC;</button><button class='bigButton'>Show Me</button>";
+      tipBox.innerHTML = "<h1>" + tip.header + "</h1><p>" + tip.info + "</p><button class='smallButton'>&#10005;</button><button class='bigButton'>Show Me</button>";
       tipBox.querySelector(".smallButton").addEventListener("click", function(e) {
         next();
       });
@@ -72,7 +70,7 @@ export class Tips {
   }
 }
 
-export class Tour {
+class Tour {
 
 	constructor(options) {
 		this.steps = [];

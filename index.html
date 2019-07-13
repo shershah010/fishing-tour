@@ -1,85 +1,272 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8"/>
   <title>Fishing Tour</title>
+  <link href="fishing-tour.css" rel="stylesheet">
+  <link href="prism/prism.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+  <link href="style.css" rel=stylesheet>
+  <script src="fishing-tour.js"></script>
 </head>
 <body>
-  <div class="logo">
-    <img src="img/logo.svg" alt="fishing tour">
+  <div class="container">
+    <div class="logo">
+      <img src="img/logo.svg" alt="fishing tour">
+    </div>
+    <div>
+      <h1>Fishing Tour</h1>
+      <h2>Overview</h2>
+      <p class="overview-info">
+        Hello world! Fishing Tour is a small client side library that facilitates the creation of feature tours or tutorials. There are two objects in this library, Tour, and Tips. The Tour class is used to create a feature tour that prevents your users from using your site until they finishing going though the tour. The Tips class creates little icons near html elements of your choice and users can click on these icons. Upon clicking on an icon, a small card will open up and display a custom hint. The main difference between the Tour and Tips classes is that a user can ignore a feature tour implemented by Tips, but cannot ignore a feature tour implemented by the Tour class. Below are ways to implement both the Tour and the Tips classes. If you have any suggestions or if you find a bug, feel free to contact me at <a href="mailto:sher.shah010@gmail.com">sher.shah010@gmail.com</a>.
+      </p>
+    </div>
+    <div class="nav">
+      <h2 class="active" onclick="navToggle('tour')">Tour</h2>
+      <h2 onclick="navToggle('tip')">Tips</h2>
+    </div>
+    <div class="tour-info">
+      <h2>For Static Pages</h2>
+      <h3>Set Up</h3>
+      <p class="discription">Simply move the following files into your project: <a href="fishing-tour.js" download>fishing-tour.js</a>, <a href="fishing-tour.css" download>fishing-tour.css</a>.</p>
+      <h3>HTML</h3>
+      <div class="code">
+<pre><code class="language-html">&lt;!-- in the header --&gt;
+&lt;link href="path/to/fishing-tour.css" rel="stylesheet"&gt;
+&lt;script src="path/to/fishing-tour.js"&gt;&lt;/script&gt;
+&lt;!-- end of body --&gt;
+&lt;script src="tour_implementation.js"&gt;&lt;/script&gt;
+</code></pre>
+      </div>
+      <p class="discription">
+        Include the first two lines of code inbetween the head tag. These are to load in the required css and javascript. Feel free to look into these files and edit them as you like. The last line should be inserted right before the closing html tag. This will hold your custom feature tour. It is important that this code runs after all the html is loaded.
+      </p>
+      <h3>JavaScript <span class="subheading">(tour_implementation.js)</span></h3>
+      <div class="code">
+<pre><code class="language-js">let tour = new Tour();
+tour.addStep({selector: "h1", info: "This is an example of a tour", position: "right"});
+// add more tour steps
+tour.start();
+</code></pre>
+      </div>
+      <p class="discription">
+        Here is an implementation of a Tour feature tour. The first line creates a tour object. Adding a tour step is done by called the addStep method and passing an object with the required keys and values. See the documentation for the details on this object. You can add as many tour steps as you want. The last line starts the feature tour.
+      </p>
+      <h2>For Angular-Based Sites</h2>
+      <h3>Installation</h3>
+      <div class="code">
+        <pre><code class="language-js">$ npm install fishing-tour</code></pre>
+      </div>
+      <h3>Adding Styles <span class="subheading">(styles.css)</span></h3>
+      <div class="code">
+        <pre><code class="language-css">@import '~../node_modules/fishing-tour/styles.css';</code></pre>
+      </div>
+      <h3>HTML <span class="subheading">(sample.component.html)</span></h3>
+      <div class="code">
+        <pre><code class="language-html">&lt;h1&gt;Hi there.&lt;/h1&gt;</code></pre>
+      </div>
+      <h3>TypeScript <span class="subheading">(sample.component.ts)</span></h3>
+      <div class="code">
+<pre><code class="language-ts">import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Tour } from 'fishing-tour';
+
+@Component({
+  selector: 'app-sample',
+  templateUrl: './sample.component.html',
+  styleUrls: ['./sample.component.css']
+})
+export class SampleComponent implements OnInit, AfterViewInit {
+
+  constructor() { }
+
+  ngOnInit() { }
+
+  ngAfterViewInit() {
+    let tips = new Tour();
+    tips.addStep({selector: "h1", info: "hello world!", position: "bottom"});
+    tips.start();
+  }
+
+}
+</code></pre>
+      </div>
+      <p class="discription">
+        The start method must be called in the ngAfterViewInit function because the DOM needs to load before the first tour step can be shown.
+      </p>
+      <h2>Documentation</h2>
+      <table>
+        <tr>
+          <td><p>Tour()</p></td>
+          <td><p>constructor</p></td>
+          <td><p>Creates a Tour object.</p></td>
+        </tr>
+        <tr>
+          <td><p>.addStep(stepObject)</p></td>
+          <td><p>method</p></td>
+          <td>
+            <p>Adds a new tour step. The stepObject must have the following properties.</p>
+            <ul>
+              <li>selector - required - string - A css query selector of the DOM element that a tip should be assigned to.</li>
+              <li>info - required - string - The message in a tour box.</li>
+              <li>position - required - string - The position of the tour box relative to its selector. The possible values are "top", "left", "right", and  "bottom".</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><p>.start()</p></td>
+          <td><p>method</p></td>
+          <td><p>Starts the feature tour. Ensure that the DOM loads before calling this method.</p></td>
+        </tr>
+      </table>
+    </div>
+    <div class="tips-info hidden">
+      <h2>For Static Pages</h2>
+      <h3>Set Up</h3>
+      <p class="discription">Simply move the following files into your project: <a href="fishing-tour.js" download>fishing-tour.js</a>, <a href="fishing-tour.css" download>fishing-tour.css</a>.</p>
+      <h3>HTML</h3>
+      <div class="code">
+<pre><code class="language-html">&lt;!-- in the header --&gt;
+&lt;link href="path/to/fishing-tour.css" rel="stylesheet"&gt;
+&lt;script src="path/to/fishing-tour.js"&gt;&lt;/script&gt;
+&lt;!-- end of body --&gt;
+&lt;script src="tip_implementation.js"&gt;&lt;/script&gt;
+</code></pre>
+      </div>
+      <p class="discription">
+        Include the first two lines of code inbetween the head tag. These are to load in the required css and javascript. Feel free to look into these files and edit them as you like. The last line should be inserted right before the closing html tag. This will hold your custom feature tour. It is important that this code runs after all the html is loaded.
+      </p>
+      <h3>JavaScript <span class="subheading">(tip_implementation.js)</span></h3>
+      <div class="code">
+<pre><code class="language-js">let tips = new Tips(0);
+tips.add({selector: "h1", header: "Welcome", info: "This is an example of a tip.", x: "0px", y: "0px"});
+// add more tips
+tips.start();
+</code></pre>
+      </div>
+      <div class="code">
+<pre><code class="language-js">let tips = new Tips(0);
+tips.add({selector: "h1", header: "Welcome", info: "This is an example of a tip.", x: "0px", y: "0px"});
+// add more tips
+tips.start();
+</code></pre>
+      </div>
+      <p class="discription">
+        Here is an implementation of a Tips feature tour. The first line creates a tip object. The zero will be explained shortly. Adding a tip is done by called the add method and passing an object with the required keys and values. See the documentation for the details on this object. You can add as many tips as you want. The last line starts the feature tour. The zero indicates that the first tip will be shown. If, instead of zero, a one was passed, then the second tip will be shown and the first tip would be ignored.
+      </p>
+      <h2>For Angular-Based Sites</h2>
+      <h3>Installation</h3>
+      <div class="code">
+        <pre><code class="language-js">$ npm install fishing-tour</code></pre>
+      </div>
+      <h3>Adding Styles <span class="subheading">(styles.css)</span></h3>
+      <div class="code">
+        <pre><code class="language-css">@import '~../node_modules/fishing-tour/styles.css';</code></pre>
+      </div>
+      <h3>HTML <span class="subheading">(sample.component.html)</span></h3>
+      <div class="code">
+        <pre><code class="language-html">&lt;h1&gt;Hi there.&lt;/h1&gt;</code></pre>
+      </div>
+      <h3>TypeScript <span class="subheading">(sample.component.ts)</span></h3>
+      <div class="code">
+<pre><code class="language-ts">import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Tips } from 'fishing-tour';
+
+@Component({
+  selector: 'app-sample',
+  templateUrl: './sample.component.html',
+  styleUrls: ['./sample.component.css']
+})
+export class SampleComponent implements OnInit, AfterViewInit {
+
+  constructor() { }
+
+  ngOnInit() { }
+
+  ngAfterViewInit() {
+    let tips = new Tips(0);
+    tips.add({selector: "h1", header: "hi", info: "hello world!", x: "200px", y: "20px"});
+    tips.start();
+  }
+
+}
+</code></pre>
+      </div>
+      <p class="discription">
+        The start method must be called in the ngAfterViewInit function because the DOM needs to load before the first tip icon can be shown.
+      </p>
+      <h2>Documentation</h2>
+      <table>
+        <tr>
+          <td><p>Tips(index)</p></td>
+          <td><p>constructor</p></td>
+          <td><p>Creates a Tips feature tour object. The index is an integer that notes which tip to show when the feature tour starts. Zero corresponds to the first tip, one corresponds to the second, etc.</p></td>
+        </tr>
+        <tr>
+          <td><p>.add(tipObject)</p></td>
+          <td><p>method</p></td>
+          <td>
+            <p>Adds a new tip with the parameters passed by the tipObject. The tipObject must be defined as below.</p>
+            <ul>
+              <li>selector - required - string - A css query selector of the DOM element that a tip should be assigned to. This element will be forced to have the following css style: position: relative.</li>
+              <li>header -  required - string - The header for tip.</li>
+              <li>info - required - string - The main text in the tip.</li>
+              <li>x - required - string - Determines how far left the tip icon and tip box is loacted relative to the selector DOM element.</li>
+              <li>y - required - string - Determines how far from the top the tip icon and tip box is loacted relative to the selector DOM element.</li>
+              <li>fn - optional - function - A function that is called when some one clicks the big button on the tip.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>.start()</td>
+          <td>method</td>
+          <td>Starts the feature tour. Ensure that this is called <em>after</em> the DOM has been loaded.</td>
+        </tr>
+      </table>
+    </div>
+    <footer>
+      <h2>View On</h2>
+      <div>
+        <a href="https://www.npmjs.com/package/fishing-tour"><img src="img/npm-logo.svg" alt="npm"></a>
+        <a href="https://github.com/shershah010/fishing-tour"><img src="img/github-logo.png" alt="github"></a>
+      </div>
+    </footer>
   </div>
-  <div>
-    <h1>Fishing Tour</h1>
-    <h2>Overview</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam bibendum feugiat placerat. Aliquam in commodo leo. Etiam a vulputate ex. Aenean suscipit dui eu egestas euismod. Proin luctus blandit arcu, a consequat lectus porttitor a. Nulla consectetur a quam sit amet rhoncus. Phasellus nec ligula non purus fringilla tristique quis eu purus. Aliquam pharetra erat ac enim egestas, vitae fermentum est ultrices. Mauris laoreet rhoncus est eget tempor. Quisque porttitor bibendum ipsum id sollicitudin. Fusce feugiat augue in nulla suscipit maximus. Praesent tincidunt fringilla turpis in porttitor. Sed eros enim, dapibus et feugiat rhoncus, efficitur in lectus. Maecenas porta consectetur auctor. Donec sagittis purus non nisi faucibus, ut rutrum lacus fermentum. Integer pulvinar dolor molestie maximus varius.
-    </p>
-  </div>
-  <div>
-    <h2 class="active">Tour</h2>
-    <h2>Tips</h2>
-  </div>
-  <div class="tour-info">
-    <h3>HTML</h3>
-    <div class="code">
-      <p>Nulla aliquet volutpat lacinia. Donec facilisis non sem at lobortis.</p>
-      <p>Sed turpis est, sodales vel justo non, posuere ullamcorper nunc.</p>
-      <p>Nam et consectetur lacus.</p>
-      <p>Sed eget sagittis nisl.</p>
-      <p>Curabitur quis mauris vitae odio posuere placerat.</p>
-      <p>Nullam congue nunc risus, ac pulvinar nunc dignissim sit amet.</p>
-    </div>
-    <h3>JavaScript</h3>
-    <div class="code">
-      <p>Nulla aliquet volutpat lacinia. Donec facilisis non sem at lobortis.</p>
-      <p>Sed turpis est, sodales vel justo non, posuere ullamcorper nunc.</p>
-      <p>Nam et consectetur lacus.</p>
-      <p>Sed eget sagittis nisl.</p>
-      <p>Curabitur quis mauris vitae odio posuere placerat.</p>
-      <p>Nullam congue nunc risus, ac pulvinar nunc dignissim sit amet.</p>
-    </div>
-    <h3>Documentation</h3>
-    <div class="code">
-      <p>Nulla aliquet volutpat lacinia. Donec facilisis non sem at lobortis.</p>
-      <p>Sed turpis est, sodales vel justo non, posuere ullamcorper nunc.</p>
-      <p>Nam et consectetur lacus.</p>
-      <p>Sed eget sagittis nisl.</p>
-      <p>Curabitur quis mauris vitae odio posuere placerat.</p>
-      <p>Nullam congue nunc risus, ac pulvinar nunc dignissim sit amet.</p>
-    </div>
-  </div>
-  <div class="tips-info hidden">
-    <h3>HTML</h3>
-    <div class="code">
-      <p>Nulla aliquet volutpat lacinia. Donec facilisis non sem at lobortis.</p>
-      <p>Sed turpis est, sodales vel justo non, posuere ullamcorper nunc.</p>
-      <p>Nam et consectetur lacus.</p>
-      <p>Sed eget sagittis nisl.</p>
-      <p>Curabitur quis mauris vitae odio posuere placerat.</p>
-      <p>Nullam congue nunc risus, ac pulvinar nunc dignissim sit amet.</p>
-    </div>
-    <h3>JavaScript</h3>
-    <div class="code">
-      <p>Nulla aliquet volutpat lacinia. Donec facilisis non sem at lobortis.</p>
-      <p>Sed turpis est, sodales vel justo non, posuere ullamcorper nunc.</p>
-      <p>Nam et consectetur lacus.</p>
-      <p>Sed eget sagittis nisl.</p>
-      <p>Curabitur quis mauris vitae odio posuere placerat.</p>
-      <p>Nullam congue nunc risus, ac pulvinar nunc dignissim sit amet.</p>
-    </div>
-    <h3>Documentation</h3>
-    <div class="code">
-      <p>Nulla aliquet volutpat lacinia. Donec facilisis non sem at lobortis.</p>
-      <p>Sed turpis est, sodales vel justo non, posuere ullamcorper nunc.</p>
-      <p>Nam et consectetur lacus.</p>
-      <p>Sed eget sagittis nisl.</p>
-      <p>Curabitur quis mauris vitae odio posuere placerat.</p>
-      <p>Nullam congue nunc risus, ac pulvinar nunc dignissim sit amet.</p>
-    </div>
-  </div>
-  <footer>
-    <h2>View</h2>
-    <img src="img/npm-logo.svg" alt="npm">
-    <img src="img/github-logo.svg" alt="github">
-  </footer>
 </body>
+<script>
+
+  links = document.querySelectorAll(".nav h2");
+  itour = document.querySelector(".tour-info");
+  itips = document.querySelector(".tips-info");
+
+  function navToggle(type) {
+    if (type == 'tour' && links[0].classList.contains('active')) { return; }
+    if (type == 'tip' && links[1].classList.contains('active')) { return; }
+    if (type == 'tour') {
+      links[1].classList.remove('active');
+      links[0].classList.add('active');
+      itips.classList.add('hidden');
+      itour.classList.remove('hidden');
+    } else {
+      links[0].classList.remove('active');
+      links[1].classList.add('active');
+      itour.classList.add('hidden');
+      itips.classList.remove('hidden');
+    }
+  }
+
+</script>
+<script>
+
+let tips = new Tips(0);
+tips.add({selector: "h1", header: "Welcome", info: "This is an example of a tip", x: "0px", y: "0px"});
+// add more tips
+tips.start();
+
+let tour = new Tour();
+tour.addStep({selector: "h1", info: "This is an example of a tour step", position: "right"});
+// add more tour steps
+tour.start();
+
+</script>
+<script src="prism/prism.js"></script>
 </html>
