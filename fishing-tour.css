@@ -1,30 +1,6 @@
 /* Tips styles */
 
-button:focus {
-  outline: none;
-}
-
-button:hover {
-  color: #eee;
-}
-
-.bigButton {
-  background-color: #22e647;
-  border: none;
-  color: #fff;
-  display: block;
-  font-family: sans-serif;
-  font-size: 16px;
-  margin: 10px auto;
-  padding: 10px;
-  text-align: center;
-}
-
-.bigButton:hover {
-  background-color: #1ccc3d;
-}
-
-.circle {
+.ft-circle {
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
   background-color: #00bfff;
   border-radius: 50%;
@@ -34,7 +10,7 @@ button:hover {
   width: 40px;
 }
 
-.circleContainer {
+.ft-circle-container {
   cursor: pointer;
   height: 40px;
   left: -40px;
@@ -46,7 +22,27 @@ button:hover {
   z-index: 100;
 }
 
-.smallButton {
+.ft-big-button:focus, ft-small-button:focus {
+  outline: none;
+}
+
+.ft-big-button {
+  background-color: #22e647;
+  border: none;
+  color: #fff;
+  display: block;
+  font-family: sans-serif;
+  font-size: 16px;
+  margin: 10px auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.ft-big-button:hover {
+  background-color: #1ccc3d;
+}
+
+.ft-small-button {
   background-color: transparent;
   border: none;
   color: #fff;
@@ -58,11 +54,11 @@ button:hover {
   top : 5px;
 }
 
-.smallButton:hover {
+.ft-small-button:hover {
   color: #f00;
 }
 
-.tipBox {
+.ft-tip-box {
   background-color: #fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-family: sans-serif;
@@ -73,19 +69,21 @@ button:hover {
   z-index: 99;
 }
 
-.tipBox h1 {
+.ft-tip-box h1 {
   background-color: #00d1ff;
   color: #fff;
   font-family: sans-serif;
   font-size: 24px;
+  font-weight: 400;
   margin: 0px;
   padding: 20px;
 }
 
-.tipBox p {
+.ft-tip-box p {
   font-family: sans-serif;
-  color: #fff;
   font-size: 16px;
+  font-weight: 400;
+  color: #000;
   padding: 20px;
 }
 
@@ -102,28 +100,41 @@ button:hover {
 
 /* Tour styles */
 
-.tourBox {
+.ft-tour-box {
   background-color: #fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-family: sans-serif;
   max-width: 350px;
   min-width: 250px;
-  height: 300px;
+  padding: 30px;
   position: absolute;
   top: 0px;
   z-index: 99;
 }
 
-.tourBox button {
+.ft-tour-box p {
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 400;
+}
+
+.ft-tour-box button {
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 400;
   background-color: #fff;
-  border: 2px solid #333;
+  border: 1px solid #333;
   border-radius: 0;
   color: #000;
-  padding: 5px;
+  padding: 10px;
   margin: 5px;
 }
 
-.tourBox button:hover {
+.ft-tour-box button:hover {
   border-color: #000;
-  color: #000;
+  background-color: #ddd;
+}
+
+.ft-hidden {
+  display: none;
 }
