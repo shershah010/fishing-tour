@@ -47,7 +47,7 @@ tour.add({selector: "h1", info: "hello", position: "right"});
 //... add more tour steps
 tour.start(0);
 ```
-### Documentation for Tips
+### Documentation for Tour
 * constructor - the constructor. Takes no arguments.
 * add - this method takes in a Map with the following attributes:
   * selector - this is a css selector the gets the element you want to provide a tip for. This element should have the `position: relative` property for the tip to display properly.
