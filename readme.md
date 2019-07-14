@@ -12,19 +12,32 @@ Hello world! Fishing Tour is a small client side library that facilitates the cr
 <h1>Hello World</h1>
 ```
 ## How to use Tips:
-### javascript file
-```js
-import { Tips } from "fishing-tour";
+### javascript file (sample.component.ts)
+```ts
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
-function hello () {
-  alert("hello world");
+
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Tips } from 'fishing-tour';
+
+@Component({
+  selector: 'app-sample',
+  templateUrl: './sample.component.html',
+  styleUrls: ['./sample.component.css']
+})
+export class SampleComponent implements OnInit, AfterViewInit {
+
+  constructor() { }
+
+  ngOnInit() { }
+
+  ngAfterViewInit() {
+    let tips = new Tips();
+    tips.add({selector: "h1", header: "hi", info: "hello world!", x: "200px", y: "20px"});
+    tips.start(0);
+  }
+
 }
-
-/* Creating tips */
-var tips = new Tips();
-tips.add({ selector: "h1", header: "hi", info: "hello", x: "180px", y: "20px", fn: hello });
-//... add more tips
-tips.start(0);
 ```
 ### Documentation for Tips
 * constructor - the constructor takes a number which is the index of the tip to be displayed. Normally this number would be zero as you would want to start from the very first tip. However, if your site remembers users then for those who have already visited the site, you might want to set the tip index to the index of the next tip the user has not seen. If a user has seen every tip you could provide a tip number past the number of tips so that user does not need to see them again.
@@ -38,14 +51,28 @@ tips.start(0);
 * start - call this function to start the tips.
 ## How to use Tour:
 ### javascript file
-```js
-import { Tour } from "fishing-tour";
+```ts
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Tour } from 'fishing-tour';
 
-/* Creating a tour */
-var tour = new Tour();
-tour.add({selector: "h1", info: "hello", position: "right"});
-//... add more tour steps
-tour.start(0);
+@Component({
+  selector: 'app-sample',
+  templateUrl: './sample.component.html',
+  styleUrls: ['./sample.component.css']
+})
+export class SampleComponent implements OnInit, AfterViewInit {
+
+  constructor() { }
+
+  ngOnInit() { }
+
+  ngAfterViewInit() {
+    let tips = new Tour();
+    tips.add({selector: "h1", info: "hello world!", position: "bottom"});
+    tips.start(0);
+  }
+
+}
 ```
 ### Documentation for Tour
 * constructor - the constructor. Takes no arguments.
