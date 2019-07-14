@@ -77,4 +77,4 @@ export class SampleComponent implements OnInit, AfterViewInit {
   * selector - A css query selector of the DOM element that a tip should be assigned to.
   * info - The message in a tour box.
   * position - The position of the tour box relative to its selector. The possible values are `top`, `left`, `right`, and `bottom`.
-* start(index) - Starts the feature tour. Ensure that the DOM loads before calling this method. The index indicates which tour step to start on..
+* start(index) - Starts the feature tour. Ensure that the DOM loads before calling this method. The index indicates which tour step to start on.
