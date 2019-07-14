@@ -35,14 +35,15 @@
     "tour"
   ],
   "license": "MIT",
-  "main": "fising-tour.js",
+  "main": "fishing-tour.js",
   "name": "fishing-tour",
+  "homepage": "https://shershah010.github.io/fishing-tour/",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/shershah010/fishing-tour"
+    "type": "git",
+    "url": "https://github.com/shershah010/fishing-tour"
   },
   "scripts": {
     "start": "node fishing-tour.js"
   },
-  "version": "1.0.5"
+  "version": "2.0.0"
 }
