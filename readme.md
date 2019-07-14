@@ -15,9 +15,6 @@ Hello world! Fishing Tour is a small client side library that facilitates the cr
 ### javascript file (sample.component.ts)
 ```ts
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-
-
-import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Tips } from 'fishing-tour';
 
 @Component({
