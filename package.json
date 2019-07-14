@@ -38,11 +38,11 @@
   "main": "fishing-tour.js",
   "name": "fishing-tour",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/shershah010/fishing-tour"
+    "type": "git",
+    "url": "https://github.com/shershah010/fishing-tour"
   },
   "scripts": {
     "start": "node fishing-tour.js"
   },
-  "version": "1.0.5"
+  "version": "2.0.0"
 }
