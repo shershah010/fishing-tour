@@ -44,9 +44,9 @@
       <h3>JavaScript <span class="subheading">(tour_implementation.js)</span></h3>
       <div class="code">
 <pre><code class="language-js">let tour = new Tour();
-tour.addStep({selector: "h1", info: "This is an example of a tour", position: "right"});
+tour.add({selector: "h1", info: "This is an example of a tour", position: "right"});
 // add more tour steps
-tour.start();
+tour.start(0);
 </code></pre>
       </div>
       <p class="discription">
@@ -83,8 +83,8 @@ export class SampleComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     let tips = new Tour();
-    tips.addStep({selector: "h1", info: "hello world!", position: "bottom"});
-    tips.start();
+    tips.add({selector: "h1", info: "hello world!", position: "bottom"});
+    tips.start(0);
   }
 
 }
@@ -101,7 +101,7 @@ export class SampleComponent implements OnInit, AfterViewInit {
           <td><p>Creates a Tour object.</p></td>
         </tr>
         <tr>
-          <td><p>.addStep(stepObject)</p></td>
+          <td><p>.add(stepObject)</p></td>
           <td><p>method</p></td>
           <td>
             <p>Adds a new tour step. The stepObject must have the following properties.</p>
@@ -113,9 +113,9 @@ export class SampleComponent implements OnInit, AfterViewInit {
           </td>
         </tr>
         <tr>
-          <td><p>.start()</p></td>
+          <td><p>.start(index)</p></td>
           <td><p>method</p></td>
-          <td><p>Starts the feature tour. Ensure that the DOM loads before calling this method.</p></td>
+          <td><p>Starts the feature tour. Ensure that the DOM loads before calling this method. The index indicates which tour step to start on.</p></td>
         </tr>
       </table>
     </div>
@@ -137,14 +137,14 @@ export class SampleComponent implements OnInit, AfterViewInit {
       </p>
       <h3>JavaScript <span class="subheading">(tip_implementation.js)</span></h3>
       <div class="code">
-<pre><code class="language-js">let tips = new Tips(0);
-tips.add({selector: "h1", header: "Welcome", info: "This is an example of a tip.", x: "0px", y: "0px"});
+<pre><code class="language-js">let tips = new Tips();
+tips.add({selector: "h1", header: "Welcome", info: "This is an example of a tip", x: "0px", y: "0px", fn: function() { alert("hello world") }});
 // add more tips
-tips.start();
+tips.start(0);
 </code></pre>
       </div>
       <p class="discription">
-        Here is an implementation of a Tips feature tour. The first line creates a tip object. The zero will be explained shortly. Adding a tip is done by called the add method and passing an object with the required keys and values. See the documentation for the details on this object. You can add as many tips as you want. The last line starts the feature tour. The zero indicates that the first tip will be shown. If, instead of zero, a one was passed, then the second tip will be shown and the first tip would be ignored.
+        Here is an implementation of a Tips feature tour. The first line creates a tip object. Adding a tip is done by called the add method and passing an object with the required keys and values. See the documentation for the details on this object. You can add as many tips as you want. The last line starts the feature tour. The zero indicates that the first tip will be shown. If, instead of zero, a one was passed, then the second tip will be shown and the first tip would be ignored, etc.
       </p>
       <h2>For Angular-Based Sites</h2>
       <h3>Installation</h3>
@@ -176,9 +176,9 @@ export class SampleComponent implements OnInit, AfterViewInit {
   ngOnInit() { }
 
   ngAfterViewInit() {
-    let tips = new Tips(0);
+    let tips = new Tips();
     tips.add({selector: "h1", header: "hi", info: "hello world!", x: "200px", y: "20px"});
-    tips.start();
+    tips.start(0);
   }
 
 }
@@ -190,9 +190,9 @@ export class SampleComponent implements OnInit, AfterViewInit {
       <h2>Documentation</h2>
       <table>
         <tr>
-          <td><p>Tips(index)</p></td>
+          <td><p>Tips()</p></td>
           <td><p>constructor</p></td>
-          <td><p>Creates a Tips feature tour object. The index is an integer that notes which tip to show when the feature tour starts. Zero corresponds to the first tip, one corresponds to the second, etc.</p></td>
+          <td><p>Creates a Tips feature tour object.</p></td>
         </tr>
         <tr>
           <td><p>.add(tipObject)</p></td>
@@ -205,14 +205,14 @@ export class SampleComponent implements OnInit, AfterViewInit {
               <li>info - required - string - The main text in the tip.</li>
               <li>x - required - string - Determines how far left the tip icon and tip box is loacted relative to the selector DOM element.</li>
               <li>y - required - string - Determines how far from the top the tip icon and tip box is loacted relative to the selector DOM element.</li>
-              <li>fn - optional - function - A function that is called when some one clicks the big button on the tip.</li>
+              <li>fn - optional - function - A function that is called when some one clicks the big button on the tip. This function should not return anything nor will any parameter be passed to it.</li>
             </ul>
           </td>
         </tr>
         <tr>
-          <td>.start()</td>
-          <td>method</td>
-          <td>Starts the feature tour. Ensure that this is called <em>after</em> the DOM has been loaded.</td>
+          <td><p>.start(index)</p></td>
+          <td><p>method</p></td>
+          <td><p>Starts the feature tour. Ensure that this is called <em>after</em> the DOM has been loaded. The index is an integer that notes which tip to show when the feature tour starts. Zero corresponds to the first tip, one corresponds to the second, etc.</p></td>
         </tr>
       </table>
     </div>
@@ -250,15 +250,16 @@ export class SampleComponent implements OnInit, AfterViewInit {
 </script>
 <script>
 
-let tips = new Tips(0);
-tips.add({selector: "h1", header: "Welcome", info: "This is an example of a tip", x: "0px", y: "0px"});
+let tips = new Tips();
+tips.add({selector: "h1", header: "Welcome", info: "This is an example of a tip", x: "0px", y: "0px", fn: function() { alert("hello world") }});
 // add more tips
-tips.start();
+tips.start(0);
 
 let tour = new Tour();
-tour.addStep({selector: "h1", info: "This is an example of a tour step", position: "right"});
+tour.add({selector: "h1", info: "This is an example of a tour step", position: "right"});
+tour.add({selector: ".nav", info: "Pick which documentation you want", position: "left"})
 // add more tour steps
-tour.start();
+tour.start(0);
 
 </script>
 <script src="prism/prism.js"></script>
